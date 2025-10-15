@@ -1,4 +1,3 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, TrendingUp, Zap } from 'lucide-react';
 import { Link } from 'react-router';
