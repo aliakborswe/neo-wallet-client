@@ -1,5 +1,6 @@
 import App from "@/App";
 import About from "@/pages/About";
+import Contact from "@/pages/Contact";
 import faq from "@/pages/faq";
 import Features from "@/pages/Features";
 import Home from "@/pages/Home";
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         Component: Pricing,
         path: "pricing",
+      },
+      {
+        Component: Contact,
+      path: "contact",
       }
     ],
   },
