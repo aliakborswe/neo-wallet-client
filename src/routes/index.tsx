@@ -3,6 +3,7 @@ import About from "@/pages/About";
 import faq from "@/pages/faq";
 import Features from "@/pages/Features";
 import Home from "@/pages/Home";
+import Pricing from "@/pages/Pricing";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       {
         Component: faq,
         path: "faq",
+      },
+      {
+        Component: Pricing,
+        path: "pricing",
       }
     ],
   },
