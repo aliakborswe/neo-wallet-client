@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import {
   Form,
@@ -50,7 +50,9 @@ const formSchema = z
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
-  const [register] = useRegisterMutation()
+  const [register] = useRegisterMutation();
+
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -71,16 +73,15 @@ export default function Register() {
       phone: data.phone,
       password: data.password,
       role: data.role,
-    }
+    };
     try {
-
       await register(userInfo).unwrap();
       toast.success("Registration successful! Please log in.");
       form.reset();
-      
+      // navigate("/verify");
     } catch (error) {
       toast.error("Failed to register. Please try again.");
-      console.log(error)
+      console.log(error);
     }
   };
 

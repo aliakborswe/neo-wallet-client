@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import {
   Form,
@@ -23,6 +23,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useLoginMutation } from "@/redux/features/auth/auth.api";
 
 const formSchema = z.object({
   email: z.email(),
@@ -31,6 +32,8 @@ const formSchema = z.object({
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [login] = useLoginMutation()
+  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,8 +44,26 @@ export default function Login() {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    toast.success("Login successful!");
-    console.log(data);
+    const credentials = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+
+      const result = await login(credentials).unwrap();
+      toast.success("Login successful!");
+      console.log(result);
+      // TODO: Redirect to dashboard or home page after login
+      
+    } catch (error: any) {
+      toast.error("Login failed. Please try again.");
+      console.log(error)
+      // if (error.originalStatus === 401) {
+      //   navigate("/verify");
+      // }
+    }
+    
   };
 
   return (
@@ -122,7 +143,7 @@ export default function Login() {
                   )}
                 />
 
-                <Button type='submit' className='w-full'>
+                <Button type='submit' className='w-full cursor-pointer'>
                   Login
                 </Button>
               </form>
