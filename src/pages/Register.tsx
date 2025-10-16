@@ -23,8 +23,9 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useRegisterMutation } from "@/redux/features/auth/auth.api";
+import { Label } from "@/components/ui/label";
 
 const formSchema = z
   .object({
@@ -49,6 +50,7 @@ const formSchema = z
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const [register] = useRegisterMutation()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,8 +65,23 @@ export default function Register() {
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    toast.success("Login successful!");
-    console.log(data);
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      password: data.password,
+      role: data.role,
+    }
+    try {
+
+      await register(userInfo).unwrap();
+      toast.success("Registration successful! Please log in.");
+      form.reset();
+      
+    } catch (error) {
+      toast.error("Failed to register. Please try again.");
+      console.log(error)
+    }
   };
 
   return (
@@ -216,11 +233,30 @@ export default function Register() {
                       <FormLabel>Account Type</FormLabel>
                       <FormControl>
                         <RadioGroup
-                          value={field.value ?? "USER"} // Ensure always controlled
+                          value={field.value ?? "USER"}
                           onValueChange={field.onChange}
                           className='flex gap-4 justify-between'
                         >
-                          {/* ...radio items... */}
+                          <div className='flex items-center space-x-2 rounded-lg border border-border p-3 hover:border-primary'>
+                            <RadioGroupItem value='USER' id='user' />
+                            <Label
+                              htmlFor='user'
+                              className='flex-1 cursor-pointer'
+                            >
+                              <div className='font-medium'>
+                                Personal Account
+                              </div>
+                            </Label>
+                          </div>
+                          <div className='flex items-center space-x-2 rounded-lg border border-border p-3 hover:border-primary'>
+                            <RadioGroupItem value='AGENT' id='agent' />
+                            <Label
+                              htmlFor='agent'
+                              className='flex-1 cursor-pointer'
+                            >
+                              <div className='font-medium'>Agent Account</div>
+                            </Label>
+                          </div>
                         </RadioGroup>
                       </FormControl>
                       <FormMessage />
@@ -228,7 +264,7 @@ export default function Register() {
                   )}
                 />
 
-                <Button type='submit' className='w-full'>
+                <Button type='submit' className='w-full cursor-pointer'>
                   Sign Up
                 </Button>
               </form>
