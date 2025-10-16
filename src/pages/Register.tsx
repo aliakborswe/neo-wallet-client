@@ -23,6 +23,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const formSchema = z
   .object({
@@ -32,11 +34,13 @@ const formSchema = z
         error: "Name is too short",
       })
       .max(50),
+    phone: z.string().min(10, { error: "Phone is too short" }),
     email: z.email(),
     password: z.string().min(8, { error: "Password is too short" }),
     confirmPassword: z
       .string()
       .min(8, { error: "Confirm Password is too short" }),
+    role: z.enum(["USER", "AGENT"]),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Password do not match",
@@ -51,8 +55,10 @@ export default function Register() {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       password: "",
       confirmPassword: "",
+      role: "USER",
     },
   });
 
@@ -77,9 +83,9 @@ export default function Register() {
 
         <Card>
           <CardHeader>
-            <CardTitle className='text-2xl'>Welcome Back</CardTitle>
+            <CardTitle className='text-2xl'>Create Account</CardTitle>
             <CardDescription>
-              Enter your email below to login to your account
+              Join thousands of users managing their finances with Neo Wallet
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -111,6 +117,24 @@ export default function Register() {
                       <FormControl>
                         <Input
                           placeholder='john@example.com'
+                          {...field}
+                          value={field.value || ""}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name='phone'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder='+88016321950xx'
                           {...field}
                           value={field.value || ""}
                         />
@@ -178,6 +202,26 @@ export default function Register() {
                             )}
                           </button>
                         </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name='role'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Account Type</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          value={field.value ?? "USER"} // Ensure always controlled
+                          onValueChange={field.onChange}
+                          className='flex gap-4 justify-between'
+                        >
+                          {/* ...radio items... */}
+                        </RadioGroup>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
