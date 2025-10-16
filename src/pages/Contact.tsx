@@ -1,11 +1,17 @@
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -17,17 +23,15 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-//     toast({
-//       title: "Message Sent!",
-//       description:
-//         "Thank you for contacting us. We'll get back to you within 24 hours.",
-//     });
+    toast.success("Message Sent!", {
+      description:
+        "Thank you for contacting us. We'll get back to you within 24 hours.",
+    });
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
     <div className='min-h-screen'>
-
       <section className='container mx-auto px-4 py-20'>
         <div className='mx-auto max-w-3xl text-center'>
           <h1 className='mb-6 text-4xl font-bold md:text-5xl'>Get in Touch</h1>

@@ -4,6 +4,7 @@ import Contact from "@/pages/Contact";
 import faq from "@/pages/faq";
 import Features from "@/pages/Features";
 import Home from "@/pages/Home";
+import Login from "@/pages/Login";
 import Pricing from "@/pages/Pricing";
 import { createBrowserRouter } from "react-router";
 
@@ -12,7 +13,7 @@ export const router = createBrowserRouter([
     Component: App,
     path: "/",
     children: [
-      {index: true, Component: Home},
+      { index: true, Component: Home },
       {
         Component: About,
         path: "about",
@@ -31,8 +32,12 @@ export const router = createBrowserRouter([
       },
       {
         Component: Contact,
-      path: "contact",
-      }
+        path: "contact",
+      },
+      {
+        Component: Login,
+        path: "login",
+      },
     ],
   },
 ]);

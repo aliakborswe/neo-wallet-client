@@ -2,12 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ActiveLink from "./ActiveLink";
-import logo from "@/assets/react.svg";
 import { Link } from "react-router";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(null);
 
   const toggleMenu = () => setShowMenu(!showMenu);
   // hide mobile menu when click any where outside mobile menu
@@ -31,12 +30,12 @@ export default function Navbar() {
             {showMenu ? <X size={36} /> : <Menu size={36} />}
           </div>
           <Link to='/' className='flex gap-2 items-center justify-start'>
-              <div className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary'>
-                <span className='text-lg font-bold text-primary-foreground'>
-                  N
-                </span>
-              </div>
-              <span className='text-xl font-bold'>Neo Wallet</span>
+            <div className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary'>
+              <span className='text-lg font-bold text-primary-foreground'>
+                N
+              </span>
+            </div>
+            <span className='text-xl font-bold'>Neo Wallet</span>
           </Link>
         </div>
         <div
