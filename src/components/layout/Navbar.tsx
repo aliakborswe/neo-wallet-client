@@ -3,10 +3,33 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ActiveLink from "./ActiveLink";
 import { Link } from "react-router";
+import {
+  authApi,
+  useLogoutMutation,
+  useProfileQuery,
+} from "@/redux/features/auth/auth.api";
+import { toast } from "sonner";
+import { useAppDispatch } from "@/redux/hook";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
-  const [user, setUser] = useState(null);
+  const { data } = useProfileQuery(undefined);
+  const [logout] = useLogoutMutation();
+
+  const dispatch = useAppDispatch();
+
+  console.log(data?.data?.email);
+
+  const handleLogout = async () => {
+    try {
+      await logout(undefined);
+      dispatch(authApi.util.resetApiState());
+      toast.success("Logout successful!");
+    } catch (error) {
+      console.error("Logout failed:", error);
+      toast.error("Logout failed. Please try again.");
+    }
+  };
 
   const toggleMenu = () => setShowMenu(!showMenu);
   // hide mobile menu when click any where outside mobile menu
@@ -50,7 +73,7 @@ export default function Navbar() {
             <ActiveLink to='/features'>Features</ActiveLink>
             <ActiveLink to='/pricing'>Pricing</ActiveLink>
             <ActiveLink to='/contact'>Contact</ActiveLink>
-            {user && (
+            {data?.data?.email && (
               <>
                 <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
               </>
@@ -59,19 +82,21 @@ export default function Navbar() {
         </div>
 
         <div className='flex items-center  gap-6 text-base font-semibold [&_a]:flex [&_a]:gap-1 '>
-          {user !== null ? (
+          {data?.data?.email && (
             <Button
               variant={"destructive"}
               size={"sm"}
+              onClick={handleLogout}
               className='flex items-center gap-1 '
             >
               Logout
             </Button>
-          ) : (
+          )}
+          {!data?.data?.email && (
             <ActiveLink to='/login'>
               <Button
                 variant={"default"}
-                className='flex items-center gap-1 hover:bg-primary'
+                className='flex items-center gap-1 hover:bg-primary cursor-pointer'
               >
                 Get Started
               </Button>

@@ -32,7 +32,7 @@ const formSchema = z.object({
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [login] = useLoginMutation()
+  const [login] = useLoginMutation();
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,22 +48,18 @@ export default function Login() {
       email: data.email,
       password: data.password,
     };
-
+    const loginId = toast.loading("Logging in...");
     try {
-
-      const result = await login(credentials).unwrap();
-      toast.success("Login successful!");
-      console.log(result);
-      // TODO: Redirect to dashboard or home page after login
-      
+      await login(credentials).unwrap();
+      toast.success("Login successful!", { id: loginId });
+      // navigate("/dashboard");
     } catch (error: any) {
-      toast.error("Login failed. Please try again.");
-      console.log(error)
+      toast.error("Credentials are not valid", { id: loginId });
+      console.log(error);
       // if (error.originalStatus === 401) {
       //   navigate("/verify");
       // }
     }
-    
   };
 
   return (
