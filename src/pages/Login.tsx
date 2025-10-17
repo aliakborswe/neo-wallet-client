@@ -23,7 +23,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useLoginMutation } from "@/redux/features/auth/auth.api";
+import { authApi, useLoginMutation } from "@/redux/features/auth/auth.api";
+import { useAppDispatch } from "@/redux/hook";
 
 const formSchema = z.object({
   email: z.email(),
@@ -34,6 +35,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [login] = useLoginMutation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,8 +53,9 @@ export default function Login() {
     const loginId = toast.loading("Logging in...");
     try {
       await login(credentials).unwrap();
+      dispatch(authApi.util.resetApiState());
       toast.success("Login successful!", { id: loginId });
-      // navigate("/dashboard");
+      navigate("/");
     } catch (error: any) {
       toast.error("Credentials are not valid", { id: loginId });
       console.log(error);
