@@ -18,13 +18,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { authApi, useLoginMutation } from "@/redux/features/auth/auth.api";
-import { useAppDispatch } from "@/redux/hook";
+import { useLoginMutation } from "@/redux/features/auth/auth.api";
+import { role } from "@/constants/role";
 
 const formSchema = z.object({
   email: z.email(),
@@ -46,7 +46,6 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [login] = useLoginMutation();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,17 +55,28 @@ export default function Login() {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const credentials = {
       email: data.email,
       password: data.password,
     };
     const loginId = toast.loading("Logging in...");
     try {
-      await login(credentials).unwrap();
-      dispatch(authApi.util.resetApiState());
+      const result = await login(credentials).unwrap();
+      const dashboardPath = result?.data?.user?.role;
       toast.success("Login successful!", { id: loginId });
-      navigate("/");
+      if (dashboardPath === role.SUPER_ADMIN) {
+        navigate("/admin");
+      }
+      if (dashboardPath === role.ADMIN) {
+        navigate("/admin");
+      }
+      if (dashboardPath === role.AGENT) {
+        navigate("/agent");
+      }
+      if (dashboardPath === role.USER) {
+        navigate("/user");
+      }
     } catch (error: any) {
       toast.error("Credentials are not valid", { id: loginId });
       console.log(error);

@@ -13,16 +13,16 @@ import {
 } from "@/components/ui/sidebar";
 import Logo from "./layout/Logo";
 import { getSidebarItems } from "@/utils/getSidebarItems";
-
-
+import { useProfileQuery } from "@/redux/features/auth/auth.api";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  // This is sample data.
+  const { data: userData } = useProfileQuery(undefined);
+
   const data = {
-    navMain: getSidebarItems("USER"),
+    navMain: getSidebarItems(userData?.data?.role),
   };
 
-  console.log(data)
+  console.log(data);
   return (
     <Sidebar {...props} aria-label='Main Sidebar'>
       <Logo className='px-4 py-4' />
