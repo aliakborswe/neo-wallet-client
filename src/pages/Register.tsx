@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { toast } from "sonner";
 import {
   Form,
@@ -37,10 +37,21 @@ const formSchema = z
       .max(50),
     phone: z.string().min(10, { error: "Phone is too short" }),
     email: z.email(),
-    password: z.string().min(8, { error: "Password is too short" }),
+    password: z
+      .string()
+      .min(8, { error: "Password must be at least 8 characters long." })
+      .regex(/^(?=.*[A-Z])/, {
+        message: "Password must contain at least 1 uppercase letter.",
+      })
+      .regex(/^(?=.*[!@#$%^&*])/, {
+        message: "Password must contain at least 1 special character.",
+      })
+      .regex(/^(?=.*\d)/, {
+        message: "Password must contain at least 1 number.",
+      }),
     confirmPassword: z
       .string()
-      .min(8, { error: "Confirm Password is too short" }),
+      .min(8, { error: "Confirm Password is not matched" }),
     role: z.enum(["USER", "AGENT"]),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -51,8 +62,6 @@ const formSchema = z
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [register] = useRegisterMutation();
-
-  const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

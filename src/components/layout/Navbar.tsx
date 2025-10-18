@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ActiveLink from "./ActiveLink";
-import { Link } from "react-router";
 import {
   authApi,
   useLogoutMutation,
@@ -10,6 +9,7 @@ import {
 } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 import { useAppDispatch } from "@/redux/hook";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -52,14 +52,7 @@ export default function Navbar() {
           <div onClick={toggleMenu} className='lg:hidden'>
             {showMenu ? <X size={36} /> : <Menu size={36} />}
           </div>
-          <Link to='/' className='flex gap-2 items-center justify-start'>
-            <div className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary'>
-              <span className='text-lg font-bold text-primary-foreground'>
-                N
-              </span>
-            </div>
-            <span className='text-xl font-bold'>Neo Wallet</span>
-          </Link>
+          <Logo />
         </div>
         <div
           ref={menuRef}

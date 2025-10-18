@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import Logo from "./Logo";
 
 
 export default function Footer() {
@@ -7,14 +8,7 @@ export default function Footer() {
       <div className='container mx-auto px-4'>
         <div className='grid gap-8 md:grid-cols-4'>
           <div>
-            <div className='mb-4 flex items-center gap-2'>
-              <div className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary'>
-                <span className='text-lg font-bold text-primary-foreground'>
-                  N
-                </span>
-              </div>
-              <span className='text-xl font-bold'>Neo Wallet</span>
-            </div>
+            <Logo className="py-5" />
             <p className='text-sm text-muted-foreground'>
               The future of digital finance, available today.
             </p>

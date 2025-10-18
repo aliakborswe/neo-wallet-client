@@ -1,5 +1,7 @@
 import App from "@/App";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import About from "@/pages/About";
+import Analytics from "@/pages/admin/Analytics";
 import Contact from "@/pages/Contact";
 import faq from "@/pages/faq";
 import Features from "@/pages/Features";
@@ -11,6 +13,16 @@ import Verify from "@/pages/Verify";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
+  {
+    Component: DashboardLayout,
+    path: "/dashboard",
+    children: [
+      {
+        Component: Analytics,
+        path: "analytics",
+      },
+    ],
+  },
   {
     Component: App,
     path: "/",
@@ -47,7 +59,7 @@ export const router = createBrowserRouter([
       {
         Component: Verify,
         path: "verify",
-      }
+      },
     ],
   },
 ]);
