@@ -10,18 +10,27 @@ import Login from "@/pages/Login";
 import Pricing from "@/pages/Pricing";
 import Register from "@/pages/Register";
 import Verify from "@/pages/Verify";
+import { generateRoutes } from "@/utils/generateRoutes";
 import { createBrowserRouter } from "react-router";
+import { adminSidebarItems } from "./adminSidebarItems";
+import { agentSidebarItems } from "./agentSidebarItems";
+import { userSidebarItems } from "./userSidebarItems";
 
 export const router = createBrowserRouter([
   {
     Component: DashboardLayout,
-    path: "/dashboard",
-    children: [
-      {
-        Component: Analytics,
-        path: "analytics",
-      },
-    ],
+    path: "/admin",
+    children: [...generateRoutes(adminSidebarItems)],
+  },
+  {
+    Component: DashboardLayout,
+    path: "/agent",
+    children: [...generateRoutes(agentSidebarItems)],
+  },
+  {
+    Component: DashboardLayout,
+    path: "/user",
+    children: [...generateRoutes(userSidebarItems)],
   },
   {
     Component: App,
@@ -48,18 +57,18 @@ export const router = createBrowserRouter([
         Component: Contact,
         path: "contact",
       },
-      {
-        Component: Login,
-        path: "login",
-      },
-      {
-        Component: Register,
-        path: "register",
-      },
-      {
-        Component: Verify,
-        path: "verify",
-      },
     ],
+  },
+  {
+    Component: Login,
+    path: "login",
+  },
+  {
+    Component: Register,
+    path: "register",
+  },
+  {
+    Component: Verify,
+    path: "verify",
   },
 ]);

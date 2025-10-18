@@ -11,15 +11,18 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { adminSidebarItems } from "@/routes/adminSidebarItems";
 import Logo from "./layout/Logo";
+import { getSidebarItems } from "@/utils/getSidebarItems";
 
-// This is sample data.
-const data = {
-  navMain: adminSidebarItems,
-};
+
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  // This is sample data.
+  const data = {
+    navMain: getSidebarItems("USER"),
+  };
+
+  console.log(data)
   return (
     <Sidebar {...props} aria-label='Main Sidebar'>
       <Logo className='px-4 py-4' />

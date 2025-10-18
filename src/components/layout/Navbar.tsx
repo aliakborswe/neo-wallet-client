@@ -21,14 +21,8 @@ export default function Navbar() {
   console.log(data?.data?.email);
 
   const handleLogout = async () => {
-    try {
-      await logout(undefined);
-      dispatch(authApi.util.resetApiState());
-      toast.success("Logout successful!");
-    } catch (error) {
-      console.error("Logout failed:", error);
-      toast.error("Logout failed. Please try again.");
-    }
+    await logout(undefined);
+    dispatch(authApi.util.resetApiState());
   };
 
   const toggleMenu = () => setShowMenu(!showMenu);

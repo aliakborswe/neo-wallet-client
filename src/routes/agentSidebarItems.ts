@@ -2,18 +2,18 @@ import Analytics from "@/pages/admin/Analytics";
 import type { ISidebarItem } from "@/types";
 
 
-export const adminSidebarItems: ISidebarItem[] = [
+export const agentSidebarItems: ISidebarItem[] = [
   {
-    title: "Admin Dashboard",
+    title: "Agent Dashboard",
     items: [
       {
         title: "Analytics",
-        url: "/admin/analytics",
+        url: "/agent/analytics",
         component: Analytics,
       },
       {
         title: "Project Structure",
-        url: "/admin/about",
+        url: "/agent/about",
         component: Analytics,
       },
     ],
