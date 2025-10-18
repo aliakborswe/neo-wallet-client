@@ -7,7 +7,6 @@ import {
   useLogoutMutation,
   useProfileQuery,
 } from "@/redux/features/auth/auth.api";
-import { toast } from "sonner";
 import { useAppDispatch } from "@/redux/hook";
 import Logo from "./Logo";
 
@@ -17,8 +16,14 @@ export default function Navbar() {
   const [logout] = useLogoutMutation();
 
   const dispatch = useAppDispatch();
+  const userRole = data?.data?.role;
 
-  console.log(data?.data?.email);
+  // Map user roles to dashboard routes
+  const dashboardRoutes: Record<string, string> = {
+    ADMIN: "/admin",
+    AGENT: "/agent",
+    USER: "/user",
+  };
 
   const handleLogout = async () => {
     await logout(undefined);
@@ -42,53 +47,53 @@ export default function Navbar() {
   return (
     <nav className='sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-lg'>
       <div className='container mx-auto flex h-16 items-center justify-between px-4'>
-        <div className='flex items-center'>
-          <div onClick={toggleMenu} className='lg:hidden'>
-            {showMenu ? <X size={36} /> : <Menu size={36} />}
-          </div>
-          <Logo />
+        <Logo />
+        <div onClick={toggleMenu} className='lg:hidden'>
+          {showMenu ? <X size={36} /> : <Menu size={36} />}
         </div>
         <div
           ref={menuRef}
           className={`${
             showMenu ? "block" : "hidden"
-          } lg:block absolute  lg:static top-[58px] left-2.5 p-4 rounded-xl  bg-white border lg:border-none shadow-md lg:shadow-none lg:bg-transparent`}
+          } lg:block absolute w-[97%] lg:w-fit lg:static top-[62px] left-2.5 p-4 rounded-xl  bg-white border lg:border-none shadow-md lg:shadow-none lg:bg-transparent`}
         >
-          <div className='flex flex-col lg:flex-row gap-6 text-base font-medium text-foreground w-full'>
-            <ActiveLink to='/'>Home</ActiveLink>
-            <ActiveLink to='/about'>About</ActiveLink>
-            <ActiveLink to='/features'>Features</ActiveLink>
-            <ActiveLink to='/pricing'>Pricing</ActiveLink>
-            <ActiveLink to='/contact'>Contact</ActiveLink>
-            {data?.data?.email && (
-              <>
-                <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
-              </>
-            )}
-          </div>
-        </div>
+          <div className='lg:flex justify-between items-center'>
+            <div className='flex flex-col lg:flex-row gap-6 text-base font-medium text-foreground'>
+              <ActiveLink to='/'>Home</ActiveLink>
+              <ActiveLink to='/about'>About</ActiveLink>
+              <ActiveLink to='/features'>Features</ActiveLink>
+              <ActiveLink to='/pricing'>Pricing</ActiveLink>
+              <ActiveLink to='/contact'>Contact</ActiveLink>
+              {data?.data?.email && (
+                <ActiveLink to={dashboardRoutes[userRole] || "/"}>
+                  Dashboard
+                </ActiveLink>
+              )}
+            </div>
 
-        <div className='flex items-center  gap-6 text-base font-semibold [&_a]:flex [&_a]:gap-1 '>
-          {data?.data?.email && (
-            <Button
-              variant={"destructive"}
-              size={"sm"}
-              onClick={handleLogout}
-              className='flex items-center gap-1 '
-            >
-              Logout
-            </Button>
-          )}
-          {!data?.data?.email && (
-            <ActiveLink to='/login'>
-              <Button
-                variant={"default"}
-                className='flex items-center gap-1 hover:bg-primary cursor-pointer'
-              >
-                Get Started
-              </Button>
-            </ActiveLink>
-          )}
+            <div className='lg:ml-8 mt-6 lg:mt-0'>
+              {data?.data?.email && (
+                <Button
+                  variant={"destructive"}
+                  size={"sm"}
+                  onClick={handleLogout}
+                  className='flex items-center gap-1 '
+                >
+                  Logout
+                </Button>
+              )}
+              {!data?.data?.email && (
+                <ActiveLink to='/login'>
+                  <Button
+                    variant={"default"}
+                    className='flex items-center gap-1 hover:bg-primary cursor-pointer'
+                  >
+                    Get Started
+                  </Button>
+                </ActiveLink>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </nav>
