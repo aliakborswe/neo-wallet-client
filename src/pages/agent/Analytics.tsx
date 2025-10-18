@@ -1,3 +1,3 @@
 export default function Analytics() {
-  return <div>Admin Analytics</div>;
+  return <div>Agent Analytics</div>;
 }

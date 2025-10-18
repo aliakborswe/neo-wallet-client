@@ -1,5 +1,8 @@
-import Analytics from "@/pages/admin/Analytics";
+
+// import Overview from "@/pages/user/Overview";
 import type { ISidebarItem } from "@/types";
+import { lazy } from "react";
+const Overview = lazy(()=> import("@/pages/user/Overview"))
 
 export const userSidebarItems: ISidebarItem[] = [
   {
@@ -7,13 +10,13 @@ export const userSidebarItems: ISidebarItem[] = [
     items: [
       {
         title: "Analytics",
-        url: "/user/analytics",
-        component: Analytics,
+        url: "/user/overview",
+        component: Overview,
       },
       {
         title: "Project Structure",
         url: "/user/about",
-        component: Analytics,
+        component: Overview,
       },
     ],
   },

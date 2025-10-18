@@ -1,7 +1,6 @@
 import App from "@/App";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import About from "@/pages/About";
-import Analytics from "@/pages/admin/Analytics";
 import Contact from "@/pages/Contact";
 import faq from "@/pages/faq";
 import Features from "@/pages/Features";
@@ -11,26 +10,37 @@ import Pricing from "@/pages/Pricing";
 import Register from "@/pages/Register";
 import Verify from "@/pages/Verify";
 import { generateRoutes } from "@/utils/generateRoutes";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { adminSidebarItems } from "./adminSidebarItems";
 import { agentSidebarItems } from "./agentSidebarItems";
 import { userSidebarItems } from "./userSidebarItems";
+import { withAuth } from "@/utils/withAuth";
+import Unauthorized from "@/pages/Unauthorized";
 
 export const router = createBrowserRouter([
   {
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, "ADMIN"),
     path: "/admin",
-    children: [...generateRoutes(adminSidebarItems)],
+    children: [
+      { index: true, element: <Navigate to='/admin/analytics' /> },
+      ...generateRoutes(adminSidebarItems),
+    ],
   },
   {
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, "AGENT"),
     path: "/agent",
-    children: [...generateRoutes(agentSidebarItems)],
+    children: [
+      { index: true, element: <Navigate to='/agent/analytics' /> },
+      ...generateRoutes(agentSidebarItems),
+    ],
   },
   {
-    Component: DashboardLayout,
+    Component: withAuth(DashboardLayout, "USER"),
     path: "/user",
-    children: [...generateRoutes(userSidebarItems)],
+    children: [
+      { index: true, element: <Navigate to='/user/overview' /> },
+      ...generateRoutes(userSidebarItems),
+    ],
   },
   {
     Component: App,
@@ -71,4 +81,8 @@ export const router = createBrowserRouter([
     Component: Verify,
     path: "verify",
   },
+  {
+    Component: Unauthorized,
+    path: "unauthorized",
+  }
 ]);
