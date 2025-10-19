@@ -106,7 +106,7 @@ export default function UpdateProfile() {
           <Spinner />
         </div>
       ) : (
-        <Card className='w-full max-w-xl mx-auto'>
+        <Card className='w-full max-w-xl lg:m-12'>
           <CardHeader>
             <CardTitle>Update to your Profile</CardTitle>
             <CardDescription>

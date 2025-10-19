@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
 import { useWalletQuery } from "@/redux/features/user/profile.api";
@@ -15,7 +15,7 @@ export default function Wallet() {
         <h1 className='text-3xl font-bold'>My Wallet</h1>
       </div>
 
-      <Card>
+      <Card className='w-full max-w-3xl'>
         <CardContent>
           {isLoading ? (
             <div className='flex justify-center py-8'>
@@ -26,7 +26,7 @@ export default function Wallet() {
               No wallet found
             </div>
           ) : (
-            <div className='flex justify-between rounded-lg border border-border p-4 shadow-2xl'>
+            <div className='flex justify-between rounded-lg border border-border p-8 shadow-2xl'>
               <div className='flex-1 space-y-3'>
                 <div className='font-medium'>
                   <strong>Wallet Owner: </strong>
@@ -44,7 +44,9 @@ export default function Wallet() {
                 <div className='text-right'>
                   <div className='text-lg font-bold'>
                     <strong>Ballance: </strong>
-                    <span className='text-chart-3'>{wallet.balance}</span>
+                    <span className='text-chart-3'>
+                      ৳{wallet.balance / 100}
+                    </span>
                   </div>
                   <div>
                     <strong>Status: </strong>

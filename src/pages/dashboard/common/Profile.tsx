@@ -11,7 +11,7 @@ export default function Profile() {
         <h1 className='text-3xl font-bold'>My Profile</h1>
       </div>
 
-      <Card>
+      <Card className='w-full max-w-3xl'>
         <CardContent>
           {isLoading ? (
             <div className='flex justify-center py-8'>
@@ -22,7 +22,7 @@ export default function Profile() {
               No profile found
             </div>
           ) : (
-            <div className='flex justify-between rounded-lg border border-border p-4 shadow-2xl'>
+            <div className='flex justify-between rounded-lg border border-border p-8 shadow-2xl'>
               <div className='flex-1 space-y-3'>
                 <div className='font-medium'>
                   <strong>Name: </strong>
