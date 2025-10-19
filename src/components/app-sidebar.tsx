@@ -14,6 +14,7 @@ import {
 import Logo from "./layout/Logo";
 import { getSidebarItems } from "@/utils/getSidebarItems";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
+import { Link } from "react-router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userData } = useProfileQuery(undefined);
@@ -22,7 +23,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     navMain: getSidebarItems(userData?.data?.role),
   };
 
-  console.log(data);
   return (
     <Sidebar {...props} aria-label='Main Sidebar'>
       <Logo className='px-4 py-4' />
@@ -35,8 +35,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                    {/* <SidebarMenuButton asChild isActive={item.isActive}> */}
+                    <SidebarMenuButton asChild>
+                      <Link to={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
