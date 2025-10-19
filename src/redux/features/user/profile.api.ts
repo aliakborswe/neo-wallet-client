@@ -9,7 +9,15 @@ export const profileApi = baseApi.injectEndpoints({
       }),
       providesTags: ["WALLET"],
     }),
+    updateProfile: builder.mutation({
+      query: (userInfo) => ({
+        url: "/user/update-profile",
+        method: "PATCH",
+        data: userInfo,
+      }),
+      invalidatesTags: ["USER"],
+    }),
   }),
 });
 
-export const { useWalletQuery } = profileApi;
+export const { useWalletQuery, useUpdateProfileMutation } = profileApi;
