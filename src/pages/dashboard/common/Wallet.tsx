@@ -23,7 +23,7 @@ export default function Wallet() {
             </div>
           ) : wallet.length === 0 ? (
             <div className='py-8 text-center text-muted-foreground'>
-              No wallets found
+              No wallet found
             </div>
           ) : (
             <div className='flex justify-between rounded-lg border border-border p-4 shadow-2xl'>
