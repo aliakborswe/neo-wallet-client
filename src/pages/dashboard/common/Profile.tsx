@@ -3,8 +3,8 @@ import { Spinner } from "@/components/ui/spinner";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
 
 export default function Profile() {
-      const { data: loggedInUser, isLoading } = useProfileQuery(undefined);
-      const user = loggedInUser?.data;
+  const { data: loggedInUser, isLoading } = useProfileQuery(undefined);
+  const user = loggedInUser?.data;
   return (
     <div className='space-y-6 lg:m-12'>
       <div>
