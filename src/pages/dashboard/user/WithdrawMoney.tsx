@@ -76,9 +76,10 @@ export default function WithdrawMoney() {
               <Label htmlFor='amount'>Amount (USD)</Label>
               <Input
                 id='amount'
+                className='border-border'
                 type='number'
-                step='0.01'
-                min='0.01'
+                step='10'
+                min='10'
                 placeholder='0.00'
                 value={formData.amount}
                 onChange={(e) =>
@@ -90,16 +91,17 @@ export default function WithdrawMoney() {
                 Withdrawal fee: 1.5% of amount
               </p>
             </div>
-            <div>
-                <Label htmlFor='description'>Description (Optional)</Label>
-                <Textarea
-                  id='description'
-                  placeholder='Enter a description'
-                  value={formData.description}
-                  onChange={(e) =>
-                    setFormData({ ...formData, description: e.target.value })
-                  }
-                />
+            <div className="space-y-2">
+              <Label htmlFor='description'>Description (Optional)</Label>
+              <Textarea
+                id='description'
+                className='border-border'
+                placeholder='Enter a description'
+                value={formData.description}
+                onChange={(e) =>
+                  setFormData({ ...formData, description: e.target.value })
+                }
+              />
             </div>
 
             <div className='space-y-3'>

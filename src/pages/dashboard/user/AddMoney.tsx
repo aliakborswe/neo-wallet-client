@@ -93,6 +93,7 @@ export default function AddMoney() {
                     <FormLabel>Amount (BDT)</FormLabel>
                     <FormControl>
                       <Input
+                        className='border-border'
                         placeholder='Enter your amount'
                         {...field}
                         onChange={(e) => {
@@ -115,6 +116,7 @@ export default function AddMoney() {
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                       <Textarea
+                        className='border-border'
                         placeholder='Write a note (optional)'
                         {...field}
                         value={field.value || ""}
