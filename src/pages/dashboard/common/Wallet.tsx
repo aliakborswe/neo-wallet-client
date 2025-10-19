@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
 import { useWalletQuery } from "@/redux/features/user/profile.api";
@@ -45,7 +45,7 @@ export default function Wallet() {
                   <div className='text-lg font-bold'>
                     <strong>Ballance: </strong>
                     <span className='text-chart-3'>
-                      ৳{wallet.balance / 100}
+                      ৳{(wallet.balance / 100).toFixed(2)}
                     </span>
                   </div>
                   <div>

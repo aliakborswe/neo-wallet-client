@@ -6,6 +6,24 @@ interface formData {
   paymentMethod: "CARD" | "BANK";
 }
 
+interface Transaction {
+  _id: string;
+  type: string;
+  amount: number;
+  description: string;
+  status: string;
+  fromAccount?: string;
+  toAccount?: string;
+  createdAt: string;
+}
+
+interface IMeta {
+  limit: number;
+  page: number;
+  total: number;
+  totalPage: number;
+}
+
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     addMoney: builder.mutation({
@@ -53,6 +71,18 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["WALLET", "TRANSACTION"],
     }),
+    getMyTransactions: builder.query<
+      {
+        data: Transaction[];
+        meta: IMeta;
+      },
+      { limit?: number; page?: number }
+    >({
+      query: ({ limit = 10, page = 1 }) => ({
+        url: `/transaction/my?limit=${limit}&page=${page}`,
+      }),
+      providesTags: ["TRANSACTION"],
+    }),
   }),
 });
 
@@ -61,4 +91,5 @@ export const {
   useWithdrawMoneyMutation,
   useSendMoneyMutation,
   useCashOutMutation,
+  useGetMyTransactionsQuery,
 } = userApi;
