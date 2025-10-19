@@ -31,8 +31,6 @@ export default function Transactions() {
   const transactions = data?.data ? [data.data].flat() : [];
   const totalPages = data?.meta?.totalPage || 1;
 
-  console.log(data);
-
   const filteredTransactions =
     transactions.filter((transaction: any) => {
       const matchesType =
@@ -91,19 +89,20 @@ export default function Transactions() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className='grid gap-4 md:grid-cols-3'>
+          <div className='grid gap-6 md:grid-cols-3'>
             <div className='space-y-2'>
               <label className='text-sm font-medium'>Search</label>
               <Input
                 placeholder='Search transactions...'
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                className='bg-white'
               />
             </div>
             <div className='space-y-2'>
-              <label className='text-sm font-medium'>Type</label>
+              <label className='text-sm font-medium '>Type</label>
               <Select value={typeFilter} onValueChange={setTypeFilter}>
-                <SelectTrigger>
+                <SelectTrigger className='bg-white'>
                   <SelectValue placeholder='All Types' />
                 </SelectTrigger>
                 <SelectContent>
@@ -119,7 +118,7 @@ export default function Transactions() {
             <div className='space-y-2'>
               <label className='text-sm font-medium'>Status</label>
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger>
+                <SelectTrigger className='bg-white'>
                   <SelectValue placeholder='All Status' />
                 </SelectTrigger>
                 <SelectContent>
@@ -162,7 +161,7 @@ export default function Transactions() {
                 {filteredTransactions.map((transaction: any) => (
                   <div
                     key={transaction._id}
-                    className='flex items-center justify-between rounded-lg border border-border p-4'
+                    className='flex items-center justify-between rounded-lg border border-border p-4 bg-white'
                   >
                     <div className='flex items-center gap-4'>
                       <div
