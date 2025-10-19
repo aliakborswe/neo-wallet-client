@@ -6,7 +6,7 @@ export default function Profile() {
       const { data: loggedInUser, isLoading } = useProfileQuery(undefined);
       const user = loggedInUser?.data;
   return (
-    <div className='space-y-6'>
+    <div className='space-y-6 lg:m-12'>
       <div>
         <h1 className='text-3xl font-bold'>My Profile</h1>
       </div>
