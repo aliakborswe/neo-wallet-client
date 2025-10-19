@@ -18,6 +18,7 @@ import { withAuth } from "@/utils/withAuth";
 import Unauthorized from "@/pages/Unauthorized";
 import { role } from "@/constants/role";
 import type { TRole } from "@/types";
+import { profileSidebarItems } from "./profileSidebarItems";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to='/admin/analytics' /> },
       ...generateRoutes(adminSidebarItems),
+      ...generateRoutes(profileSidebarItems(role.ADMIN)),
     ],
   },
   {
@@ -34,6 +36,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to='/agent/analytics' /> },
       ...generateRoutes(agentSidebarItems),
+      ...generateRoutes(profileSidebarItems(role.AGENT)),
     ],
   },
   {
@@ -42,8 +45,10 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to='/user/overview' /> },
       ...generateRoutes(userSidebarItems),
+      ...generateRoutes(profileSidebarItems(role.USER )),
     ],
   },
+
   {
     Component: App,
     path: "/",
@@ -86,5 +91,5 @@ export const router = createBrowserRouter([
   {
     Component: Unauthorized,
     path: "unauthorized",
-  }
+  },
 ]);

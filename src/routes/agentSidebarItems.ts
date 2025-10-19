@@ -1,10 +1,8 @@
-
 // import Analytics from "@/pages/agent/Analytics";
 import type { ISidebarItem } from "@/types";
 import { lazy } from "react";
 
-const Analytics = lazy(()=> import("@/pages/agent/Analytics"))
-
+const Analytics = lazy(() => import("@/pages/dashboard/agent/Analytics"));
 
 export const agentSidebarItems: ISidebarItem[] = [
   {

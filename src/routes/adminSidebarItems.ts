@@ -2,8 +2,7 @@
 import type { ISidebarItem } from "@/types";
 import { lazy } from "react";
 
-const Analytics = lazy(()=> import("@/pages/admin/Analytics"))
-
+const Analytics = lazy(() => import("@/pages/dashboard/admin/Analytics"));
 
 export const adminSidebarItems: ISidebarItem[] = [
   {

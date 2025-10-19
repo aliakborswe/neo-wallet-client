@@ -14,10 +14,11 @@ import {
 import Logo from "./layout/Logo";
 import { getSidebarItems } from "@/utils/getSidebarItems";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userData } = useProfileQuery(undefined);
+  const location = useLocation();
 
   const data = {
     navMain: getSidebarItems(userData?.data?.role),
@@ -36,7 +37,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     {/* <SidebarMenuButton asChild isActive={item.isActive}> */}
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={location.pathname === item.url}
+                    >
                       <Link to={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

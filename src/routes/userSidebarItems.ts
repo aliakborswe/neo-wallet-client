@@ -1,15 +1,14 @@
-
 // import Overview from "@/pages/user/Overview";
 import type { ISidebarItem } from "@/types";
 import { lazy } from "react";
-const Overview = lazy(()=> import("@/pages/user/Overview"))
+const Overview = lazy(() => import("@/pages/dashboard/user/Overview"));
 
 export const userSidebarItems: ISidebarItem[] = [
   {
     title: "User Dashboard",
     items: [
       {
-        title: "Analytics",
+        title: "Overview",
         url: "/user/overview",
         component: Overview,
       },

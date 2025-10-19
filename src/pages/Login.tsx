@@ -77,6 +77,9 @@ export default function Login() {
       if (dashboardPath === role.USER) {
         navigate("/user");
       }
+      if (!dashboardPath) {
+        navigate("/");
+      }
     } catch (error: any) {
       toast.error("Credentials are not valid", { id: loginId });
       console.log(error);
@@ -194,13 +197,13 @@ export default function Login() {
           </CardHeader>
           <CardContent className='space-y-2 text-xs text-muted-foreground'>
             <div>
-              <strong>User:</strong> user@example.com / password123
+              <strong>User:</strong> user@gmail.com / aadsfA123!
             </div>
             <div>
-              <strong>Agent:</strong> agent@example.com / password123
+              <strong>Agent:</strong> agent@gmail.com / aadsfA123!
             </div>
             <div>
-              <strong>Admin:</strong> admin@example.com / password123
+              <strong>Admin:</strong> admin@gmail.com / aadsfA123!
             </div>
           </CardContent>
         </Card>
