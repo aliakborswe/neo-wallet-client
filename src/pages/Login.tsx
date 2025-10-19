@@ -24,7 +24,6 @@ import { Eye, EyeOff } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
-import { role } from "@/constants/role";
 
 const formSchema = z.object({
   email: z.email(),
@@ -47,6 +46,13 @@ export default function Login() {
   const [login] = useLoginMutation();
   const navigate = useNavigate();
 
+  // Map user roles to dashboard routes
+  const dashboardRoutes: Record<string, string> = {
+    ADMIN: "/admin/profile",
+    AGENT: "/agent/profile",
+    USER: "/user/profile",
+  };
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -63,23 +69,9 @@ export default function Login() {
     const loginId = toast.loading("Logging in...");
     try {
       const result = await login(credentials).unwrap();
-      const dashboardPath = result?.data?.user?.role;
+      const userRole = result?.data?.user.role;
       toast.success("Login successful!", { id: loginId });
-      if (dashboardPath === role.SUPER_ADMIN) {
-        navigate("/admin");
-      }
-      if (dashboardPath === role.ADMIN) {
-        navigate("/admin");
-      }
-      if (dashboardPath === role.AGENT) {
-        navigate("/agent");
-      }
-      if (dashboardPath === role.USER) {
-        navigate("/user");
-      }
-      if (!dashboardPath) {
-        navigate("/");
-      }
+      navigate(dashboardRoutes[userRole] || "/");
     } catch (error: any) {
       toast.error("Credentials are not valid", { id: loginId });
       console.log(error);
