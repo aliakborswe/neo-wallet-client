@@ -1,22 +1,19 @@
-// import Analytics from "@/pages/agent/Analytics";
+import CashIn from "@/pages/dashboard/agent/CashIn";
 import type { ISidebarItem } from "@/types";
-import { lazy } from "react";
-
-const Analytics = lazy(() => import("@/pages/dashboard/agent/Analytics"));
 
 export const agentSidebarItems: ISidebarItem[] = [
   {
     title: "Agent Dashboard",
     items: [
       {
-        title: "Analytics",
-        url: "/agent/analytics",
-        component: Analytics,
+        title: "Cash In",
+        url: "/agent/cash-in",
+        component: CashIn,
       },
       {
         title: "Project Structure",
         url: "/agent/about",
-        component: Analytics,
+        component: CashIn,
       },
     ],
   },
