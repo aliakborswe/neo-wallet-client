@@ -1,3 +1,4 @@
+import AgentTransactions from "@/pages/dashboard/agent/AgentTransactions";
 import CashIn from "@/pages/dashboard/agent/CashIn";
 import Commission from "@/pages/dashboard/agent/Commission";
 import type { ISidebarItem } from "@/types";
@@ -15,6 +16,11 @@ export const agentSidebarItems: ISidebarItem[] = [
         title: "Cash In",
         url: "/agent/cash-in",
         component: CashIn,
+      },
+      {
+        title: "Transactions",
+        url: "/agent/transactions",
+        component: AgentTransactions,
       },
     ],
   },
