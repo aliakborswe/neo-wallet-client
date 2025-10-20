@@ -55,7 +55,7 @@ export default function Commission() {
             ) : (
               <>
                 <div className='text-3xl font-bold'>
-                  {formatCurrency(totalCommission || 0)}
+                  {formatCurrency(totalCommission/100)}
                 </div>
                 <p className='text-xs text-muted-foreground'>
                   All time earnings
@@ -72,7 +72,7 @@ export default function Commission() {
           </CardHeader>
           <CardContent>
             <div className='text-3xl font-bold'>
-              {formatCurrency(thisMonthCommission)}
+              {formatCurrency(thisMonthCommission/100)}
             </div>
             <p className='text-xs text-muted-foreground'>
               Current month earnings
@@ -111,7 +111,7 @@ export default function Commission() {
                   </div>
                   <div className='text-right'>
                     <div className='font-semibold text-primary'>
-                      {formatCurrency(commission.commission)}
+                      {formatCurrency(commission.commission/100)}
                     </div>
                     <div className='text-sm text-muted-foreground'>
                       Commission

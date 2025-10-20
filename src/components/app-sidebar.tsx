@@ -15,6 +15,7 @@ import Logo from "./layout/Logo";
 import { getSidebarItems } from "@/utils/getSidebarItems";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
 import { Link, useLocation } from "react-router";
+import Logout from "./layout/Logout";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userData } = useProfileQuery(undefined);
@@ -50,6 +51,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroup>
         ))}
       </SidebarContent>
+      <div className="w-full flex justify-center items-center p-4 [&>button]:w-full"><Logout/></div>
       <SidebarRail />
     </Sidebar>
   );

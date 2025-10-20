@@ -2,20 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ActiveLink from "./ActiveLink";
-import {
-  authApi,
-  useLogoutMutation,
-  useProfileQuery,
-} from "@/redux/features/auth/auth.api";
-import { useAppDispatch } from "@/redux/hook";
+import { useProfileQuery } from "@/redux/features/auth/auth.api";
 import Logo from "./Logo";
+import Logout from "./Logout";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const { data } = useProfileQuery(undefined);
-  const [logout] = useLogoutMutation();
 
-  const dispatch = useAppDispatch();
   const userRole = data?.data?.role;
 
   // Map user roles to dashboard routes
@@ -23,11 +17,6 @@ export default function Navbar() {
     ADMIN: "/admin",
     AGENT: "/agent",
     USER: "/user",
-  };
-
-  const handleLogout = async () => {
-    await logout(undefined);
-    dispatch(authApi.util.resetApiState());
   };
 
   const toggleMenu = () => setShowMenu(!showMenu);
@@ -73,14 +62,7 @@ export default function Navbar() {
 
             <div className='lg:ml-8 mt-6 lg:mt-0'>
               {data?.data?.email && (
-                <Button
-                  variant={"destructive"}
-                  size={"sm"}
-                  onClick={handleLogout}
-                  className='flex items-center gap-1 '
-                >
-                  Logout
-                </Button>
+                <Logout/>
               )}
               {!data?.data?.email && (
                 <ActiveLink to='/login'>

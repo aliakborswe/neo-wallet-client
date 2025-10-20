@@ -212,7 +212,7 @@ export default function Transactions() {
                         transaction.type.includes("WITHDRAW")
                           ? "-"
                           : "+"}
-                        {formatCurrency(transaction.amount)}
+                        {formatCurrency(transaction.amount / 100)}
                       </div>
                       <div
                         className={`text-sm ${
