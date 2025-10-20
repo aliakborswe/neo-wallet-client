@@ -46,13 +46,6 @@ export default function Login() {
   const [login] = useLoginMutation();
   const navigate = useNavigate();
 
-  // Map user roles to dashboard routes
-  const dashboardRoutes: Record<string, string> = {
-    ADMIN: "/admin/profile",
-    AGENT: "/agent/profile",
-    USER: "/user/profile",
-  };
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -68,10 +61,9 @@ export default function Login() {
     };
     const loginId = toast.loading("Logging in...");
     try {
-      const result = await login(credentials).unwrap();
-      const userRole = result?.data?.user.role;
+      login(credentials).unwrap();
       toast.success("Login successful!", { id: loginId });
-      navigate(dashboardRoutes[userRole] || "/");
+      navigate("/");
     } catch (error: any) {
       toast.error("Credentials are not valid", { id: loginId });
       console.log(error);
