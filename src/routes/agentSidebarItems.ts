@@ -1,4 +1,5 @@
 import CashIn from "@/pages/dashboard/agent/CashIn";
+import Commission from "@/pages/dashboard/agent/Commission";
 import type { ISidebarItem } from "@/types";
 
 export const agentSidebarItems: ISidebarItem[] = [
@@ -6,13 +7,13 @@ export const agentSidebarItems: ISidebarItem[] = [
     title: "Agent Dashboard",
     items: [
       {
-        title: "Cash In",
-        url: "/agent/cash-in",
-        component: CashIn,
+        title: "My Commission",
+        url: "/agent/commission",
+        component: Commission,
       },
       {
-        title: "Project Structure",
-        url: "/agent/about",
+        title: "Cash In",
+        url: "/agent/cash-in",
         component: CashIn,
       },
     ],
