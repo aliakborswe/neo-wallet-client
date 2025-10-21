@@ -8,16 +8,10 @@ import {
   useGetAllWalletsQuery,
 } from "@/redux/features/admin/admin.api";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
-import {
-  BarChart3,
-  HelpCircle,
-  TrendingUp,
-  UserCheck,
-  Users,
-  Wallet,
-} from "lucide-react";
+import { HelpCircle, TrendingUp, UserCheck, Users, Wallet } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
+import { TransactionChart } from "@/components/charts/TransactionChart";
+import { TransactionTypeChart } from "@/components/charts/TransactionTypeChart";
 
 export default function Analytics() {
   const { data: user } = useProfileQuery(undefined);
@@ -27,8 +21,10 @@ export default function Analytics() {
     useGetAllAgentsQuery(undefined);
   const { data: walletsData, isLoading: walletsLoading } =
     useGetAllWalletsQuery(undefined);
-  const { data: transactionsData, isLoading: transactionsLoading } =
+  const { data: transactions, isLoading: transactionsLoading } =
     useGetAllTransactionsQuery({});
+
+  const transactionsData = transactions?.data || [];
   const { startTour } = useTour();
 
   const totalUsers = usersData?.data?.length || 0;
@@ -37,8 +33,7 @@ export default function Analytics() {
     agentsData?.data?.filter((agent: any) => agent.approvalStatus === "PENDING")
       .length || 0;
   const totalWallets = walletsData?.data?.length || 0;
-  const totalTransactions = transactionsData?.meta?.total || 0;
-
+  const totalTransactions = transactions?.meta?.total || 0;
 
   return (
     <div className='space-y-6'>
@@ -165,6 +160,15 @@ export default function Analytics() {
           </CardContent>
         </Card>
       </div>
+      {!transactionsLoading && transactionsData.length > 0 && (
+        <div className='grid gap-4 md:grid-cols-2'>
+          <TransactionChart
+            transactions={transactionsData}
+            title='Agent Activity'
+          />
+          <TransactionTypeChart transactions={transactionsData} />
+        </div>
+      )}
     </div>
   );
 }
