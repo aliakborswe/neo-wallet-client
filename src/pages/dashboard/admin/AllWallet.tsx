@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
 import { useGetAllWalletsQuery } from "@/redux/features/admin/admin.api";
@@ -7,9 +6,7 @@ import { formatCurrency } from "@/utils/format";
 export default function AllWallet() {
   const { data, isLoading } = useGetAllWalletsQuery(undefined);
 
-    const wallets = data?.data || [];
-
-
+  const wallets = data?.data || [];
 
   return (
     <div className='space-y-6'>
@@ -51,7 +48,7 @@ export default function AllWallet() {
                   </div>
                   <div className='flex items-center gap-4'>
                     <div className='text-right'>
-                      <div className='text-lg font-bold'>
+                      <div className='text-sm sm:text-md lg:text-lg font-semibold sm:font-bold text-orange-400'>
                         {formatCurrency(wallet.balance / 100)}
                       </div>
                       <div

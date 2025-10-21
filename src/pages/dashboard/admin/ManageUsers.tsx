@@ -20,8 +20,6 @@ export default function ManageUsers() {
 
   const users = data?.data || [];
 
-  console.log(data);
-
   const filteredUsers = users.filter(
     (user: any) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -70,7 +68,7 @@ export default function ManageUsers() {
               {filteredUsers?.map((user: any) => (
                 <div
                   key={user._id}
-                  className='flex items-center justify-between rounded-lg border border-border p-4'
+                  className='sm:flex items-center justify-between rounded-lg border border-border p-4'
                 >
                   <div className='flex-1'>
                     <div className='font-medium'>{user.name}</div>
@@ -83,7 +81,7 @@ export default function ManageUsers() {
                       <span>Joined: {formatDate(user.createdAt)}</span>
                     </div>
                   </div>
-                  <div className='flex items-center gap-3'>
+                  <div className='pt-4 sm:pt-0 flex items-center gap-3'>
                     <div className='text-right'>
                       <div
                         className={`text-sm font-medium ${

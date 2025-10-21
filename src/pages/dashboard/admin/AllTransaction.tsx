@@ -165,7 +165,7 @@ export default function AllTransaction() {
                 {transactions.map((transaction: any) => (
                   <div
                     key={transaction._id}
-                    className='flex items-center justify-between rounded-lg border border-border p-4 bg-white'
+                    className='sm:flex items-center justify-between rounded-lg border border-border p-4 bg-white'
                   >
                     <div className='flex items-center gap-4'>
                       <div
@@ -203,7 +203,7 @@ export default function AllTransaction() {
                         </div>
                       </div>
                     </div>
-                    <div className='text-right'>
+                    <div className='pl-12 pt-2 sm:pt-0 sm:pl-0 sm:text-right text-orange-400'>
                       <div className='font-semibold'>
                         {formatCurrency(transaction.amount / 100)}
                       </div>

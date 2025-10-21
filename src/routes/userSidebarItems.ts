@@ -1,6 +1,7 @@
 // import Overview from "@/pages/user/Overview";
 import AddMoney from "@/pages/dashboard/user/AddMoney";
 import CashOut from "@/pages/dashboard/user/CashOut";
+import Overview from "@/pages/dashboard/user/Overview";
 import SendMoney from "@/pages/dashboard/user/SendMoney";
 import Transactions from "@/pages/dashboard/user/Transactions";
 import WithdrawMoney from "@/pages/dashboard/user/WithdrawMoney";
@@ -10,6 +11,11 @@ export const userSidebarItems: ISidebarItem[] = [
   {
     title: "User Dashboard",
     items: [
+      {
+        title: "Overview",
+        url: "/user/overview",
+        component: Overview,
+      },
       {
         title: "Add/Top-Up Money",
         url: "/user/add-money",
