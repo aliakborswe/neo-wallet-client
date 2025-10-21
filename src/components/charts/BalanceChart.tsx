@@ -43,7 +43,7 @@ export function BalanceChart({
         day: "numeric",
       });
 
-      const currentPoint = balance;
+      const currentPoint = balance/100;
 
       // Reverse the transaction to get previous balance
       if (
@@ -80,13 +80,13 @@ export function BalanceChart({
             />
             <XAxis
               dataKey='date'
-              stroke='hsl(var(--muted-foreground))'
+              stroke='#999896'
               fontSize={12}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              stroke='hsl(var(--muted-foreground))'
+              stroke='#fcad23'
               fontSize={12}
               tickLine={false}
               axisLine={false}
@@ -104,9 +104,9 @@ export function BalanceChart({
             <Line
               type='monotone'
               dataKey='balance'
-              stroke='hsl(var(--chart-2))'
+              stroke='#86c4b1'
               strokeWidth={2}
-              dot={{ fill: "hsl(var(--chart-2))", r: 4 }}
+              dot={{ fill: "#059669", r: 5 }}
               activeDot={{ r: 6 }}
             />
           </LineChart>

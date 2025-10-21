@@ -69,15 +69,12 @@ export function TransactionTypeChart({
               dataKey='value'
             >
               {chartData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
+                <Cell key={`cell-${index}`} fill='#059669' />
               ))}
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: "hsl(var(--popover))",
+                backgroundColor: "#b8b6b2",
                 border: "1px solid hsl(var(--border))",
                 borderRadius: "8px",
               }}

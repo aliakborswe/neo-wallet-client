@@ -37,7 +37,7 @@ export function TransactionChart({
         acc[date] = { date, amount: 0, count: 0 };
       }
 
-      acc[date].amount += Math.abs(transaction.amount/100);
+      acc[date].amount += Math.abs(transaction.amount / 100);
       acc[date].count += 1;
 
       return acc;
@@ -59,16 +59,8 @@ export function TransactionChart({
           <AreaChart data={chartData}>
             <defs>
               <linearGradient id='colorAmount' x1='0' y1='0' x2='0' y2='1'>
-                <stop
-                  offset='5%'
-                  stopColor='hsl(var(--primary))'
-                  stopOpacity={0.3}
-                />
-                <stop
-                  offset='95%'
-                  stopColor='hsl(var(--primary))'
-                  stopOpacity={0}
-                />
+                <stop offset='5%' stopColor='#07b56d' stopOpacity={0.3} />
+                <stop offset='95%' stopColor='#07b56d' stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -78,13 +70,13 @@ export function TransactionChart({
             />
             <XAxis
               dataKey='date'
-              stroke='hsl(var(--muted-foreground))'
+              stroke='#999896'
               fontSize={12}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              stroke='hsl(var(--muted-foreground))'
+              stroke='#fcad23'
               fontSize={12}
               tickLine={false}
               axisLine={false}
