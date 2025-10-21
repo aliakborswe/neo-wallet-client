@@ -145,4 +145,14 @@ export const adminTourSteps = [
       align: "start",
     },
   },
+  {
+    element: "[data-tour='users-activity']",
+    popover: {
+      title: "Users Activity",
+      description:
+        "Analyze user activity trends, transaction types, and platform usage statistics to make informed decisions.",
+      side: "top",
+      align: "center",
+    },
+  }
 ];

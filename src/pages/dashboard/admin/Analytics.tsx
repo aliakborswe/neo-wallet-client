@@ -161,10 +161,10 @@ export default function Analytics() {
         </Card>
       </div>
       {!transactionsLoading && transactionsData.length > 0 && (
-        <div className='grid gap-4 md:grid-cols-2'>
+        <div className='grid gap-4 md:grid-cols-2' data-tour='users-activity'>
           <TransactionChart
             transactions={transactionsData}
-            title='Agent Activity'
+            title='Users Activity'
           />
           <TransactionTypeChart transactions={transactionsData} />
         </div>
