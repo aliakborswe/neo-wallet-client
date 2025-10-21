@@ -106,11 +106,11 @@ export const agentTourSteps = [
 
 export const adminTourSteps = [
   {
-    element: "[data-tour='sidebar-nav']",
+    element: "[data-tour='analytics-intro']",
     popover: {
-      title: "Navigation Menu",
+      title: "Hello Admin!",
       description:
-        "Welcome to Admin Dashboard! Manage Users, Agents, Transactions, and Wallets from here.",
+        "Welcome to Admin Dashboard Analytics! Here you can monitor system performance, user activity, and overall platform health.",
       side: "right",
       align: "start",
     },
@@ -126,31 +126,21 @@ export const adminTourSteps = [
     },
   },
   {
-    element: "[data-tour='user-management']",
+    element: "[data-tour='recent-activities']",
     popover: {
-      title: "User Management",
+      title: "Recent Activities",
       description:
-        "Manage all users in the system. View profiles, block/unblock wallets, and monitor user activity.",
+        "Keep track of the latest activities on the platform, including user registrations, agent approvals, and recent transactions.",
       side: "bottom",
       align: "center",
     },
   },
   {
-    element: "[data-tour='transaction-management']",
+    element: "[data-tour='system-health']",
     popover: {
-      title: "Transaction Management",
+      title: "system Health",
       description:
-        "View and filter all transactions. Search by type, amount, or accounts involved. Monitor transaction flow.",
-      side: "top",
-      align: "center",
-    },
-  },
-  {
-    element: "[data-tour='wallet-management']",
-    popover: {
-      title: "Wallet Management",
-      description:
-        "Manage all wallets in the system. Update wallet status and monitor wallet activity.",
+        "Monitor system performance, transaction logs, and overall platform health from this section.",
       side: "left",
       align: "start",
     },

@@ -51,7 +51,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <div className="w-full flex justify-center items-center p-4 [&>button]:w-full"><Logout/></div>
+      <div className='w-full flex justify-center items-center p-4 [&>button]:w-full'>
+        <Logout />
+      </div>
       <SidebarRail />
     </Sidebar>
   );
