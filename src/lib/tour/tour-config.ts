@@ -1,10 +1,9 @@
 export const userTourSteps = [
   {
-    element: "[data-tour='sidebar-nav']",
+    element: "[data-tour='overview-intro']",
     popover: {
-      title: "Navigation Menu",
-      description:
-        "Welcome to Neo Wallet! This is your navigation menu. Use it to switch between different sections like Send Money, Add Money, Withdraw, and view your Transactions.",
+      title: "Hello",
+      description: "Welcome to Neo Wallet user dashboard overview!",
       side: "right",
       align: "start",
     },
@@ -30,6 +29,27 @@ export const userTourSteps = [
     },
   },
   {
+    element: "[data-tour='balance-overview']",
+    popover: {
+      title: "Balance Overview",
+      description:
+        "You can see your total sent balance, received balance and transactions",
+      side: "bottom",
+      align: "center",
+    },
+  },
+  {
+    element: "[data-tour='recent-activities']",
+    popover: {
+      title: "Recent Activities",
+      description:
+        "Keep track of the latest activities on the platform, including transaction activity and balance activity.",
+      side: "bottom",
+      align: "center",
+    },
+  },
+
+  {
     element: "[data-tour='recent-transactions']",
     popover: {
       title: "Recent Transactions",
@@ -37,16 +57,6 @@ export const userTourSteps = [
         "View your recent transactions here. You can search, filter by type, and see detailed information about each transaction.",
       side: "top",
       align: "center",
-    },
-  },
-  {
-    element: "[data-tour='profile-settings']",
-    popover: {
-      title: "Profile Settings",
-      description:
-        "Access your profile settings to update your personal information, view account details, and manage your preferences.",
-      side: "left",
-      align: "start",
     },
   },
 ];

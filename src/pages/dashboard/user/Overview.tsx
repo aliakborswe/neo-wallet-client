@@ -139,7 +139,7 @@ export default function Overview() {
         </Button>
       </div>
 
-      <div className='grid gap-4 md:grid-cols-3'>
+      <div className='grid gap-4 md:grid-cols-3' data-tour='balance-overview'>
         <StatCard
           title='Total Sent'
           value={formatCurrency(totalSent / 100)}
@@ -161,7 +161,10 @@ export default function Overview() {
       </div>
 
       {!transactionsLoading && transactionsData?.length > 0 && (
-        <div className='grid gap-4 md:grid-cols-2'>
+        <div
+          className='grid gap-4 md:grid-cols-2'
+          data-tour='recent-activities'
+        >
           <TransactionChart transactions={transactionsData} />
           <BalanceChart
             transactions={transactionsData}

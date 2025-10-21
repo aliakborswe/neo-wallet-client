@@ -5,6 +5,7 @@ A fully responsive digital wallet application built with modern web technologies
 ## 🌟 Features
 
 ### User Dashboard
+
 - **Wallet Management**: View balance, transaction history, and wallet status
 - **Money Transfer**: Send money to other users with real-time processing
 - **Add Money**: Deposit funds into your wallet
@@ -14,6 +15,7 @@ A fully responsive digital wallet application built with modern web technologies
 - **Profile Management**: Update personal information and security settings
 
 ### Agent Dashboard
+
 - **Commission Tracking**: Monitor earnings and commission history
 - **Cash-In Service**: Accept money from users
 - **Cash-Out Service**: Provide cash withdrawal services
@@ -22,6 +24,7 @@ A fully responsive digital wallet application built with modern web technologies
 - **Transaction Management**: View all agent-related transactions
 
 ### Admin Dashboard
+
 - **System Overview**: Real-time metrics for users, agents, wallets, and transactions
 - **User Management**: View and manage user accounts
 - **Agent Management**: Approve/reject agent applications
@@ -61,7 +64,9 @@ A fully responsive digital wallet application built with modern web technologies
 2. **Install dependencies**
    \`\`\`bash
    npm install
+
    # or
+
    yarn install
    \`\`\`
 
@@ -82,7 +87,9 @@ Start the development server:
 
 \`\`\`bash
 npm run dev
+
 # or
+
 yarn dev
 \`\`\`
 
@@ -95,7 +102,9 @@ Build for production:
 \`\`\`bash
 npm run build
 npm start
+
 # or
+
 yarn build
 yarn start
 \`\`\`
@@ -147,31 +156,37 @@ The application uses JWT (JSON Web Tokens) for authentication:
 For testing purposes, use these credentials:
 
 **User Account**
+
 - Email: `user@example.com`
 - Password: `password123`
 
 **Agent Account**
+
 - Email: `agent@example.com`
 - Password: `password123`
 
 **Admin Account**
+
 - Email: `admin@example.com`
 - Password: `password123`
 
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary**: Emerald Green (#10b981) - Financial growth and trust
 - **Accent**: Blue (#3b82f6) - Secondary actions and highlights
 - **Background**: Dark theme with black to dark gray gradient
 - **Text**: Light gray on dark backgrounds for optimal contrast
 
 ### Typography
+
 - **Headings**: Inter (sans-serif)
 - **Body**: Inter (sans-serif)
 - **Monospace**: Fira Code (for code blocks)
 
 ### Responsive Design
+
 - Mobile-first approach
 - Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
 - Fully responsive across all device sizes
@@ -185,12 +200,14 @@ The application integrates with the Neo Wallet API:
 ### Key Endpoints
 
 **Authentication**
+
 - `POST /auth/login` - User login
 - `POST /auth/register` - User registration
 - `POST /auth/logout` - User logout
 - `POST /auth/refresh-token` - Refresh JWT token
 
 **User Operations**
+
 - `GET /users/me` - Get current user profile
 - `GET /users/me/wallet` - Get user wallet
 - `GET /users/me/transactions` - Get user transactions
@@ -199,11 +216,13 @@ The application integrates with the Neo Wallet API:
 - `POST /users/withdraw` - Withdraw from wallet
 
 **Agent Operations**
+
 - `POST /agents/cash-in` - Cash-in service
 - `POST /agents/cash-out` - Cash-out service
 - `GET /agents/me/commission` - Get commission details
 
 **Admin Operations**
+
 - `GET /admin/users` - Get all users
 - `GET /admin/agents` - Get all agents
 - `GET /admin/wallets` - Get all wallets
@@ -214,18 +233,21 @@ The application integrates with the Neo Wallet API:
 ## 🎯 Key Features
 
 ### Real-time Data
+
 - Live wallet balance updates
 - Transaction history with real-time status
 - Commission tracking for agents
 - System metrics for administrators
 
 ### Data Visualization
+
 - Transaction trend charts
 - Balance history graphs
 - Transaction type distribution
 - System analytics
 
 ### User Experience
+
 - Guided tours for first-time users
 - Toast notifications for actions
 - Loading states and skeletons
@@ -233,6 +255,7 @@ The application integrates with the Neo Wallet API:
 - Responsive design for all devices
 
 ### Security
+
 - JWT token-based authentication
 - Protected routes with role-based access
 - Secure password handling
@@ -249,6 +272,7 @@ The application integrates with the Neo Wallet API:
    \`\`\`
 
 2. **Connect to Vercel**
+
    - Go to [vercel.com](https://vercel.com)
    - Import your GitHub repository
    - Set environment variables
@@ -260,6 +284,7 @@ The application integrates with the Neo Wallet API:
 ### Deploy to Other Platforms
 
 The application can be deployed to any platform that supports Next.js:
+
 - Netlify
 - AWS Amplify
 - DigitalOcean
@@ -295,7 +320,6 @@ For support, email support@neowallet.com or open an issue on GitHub.
 
 - **Live Demo**: [https://neo-wallet-client.netlify.app/](https://neo-wallet-client.netlify.app/)
 - **GitHub Repository**: [https://github.com/aliakborswe/neo-wallet-client](https://github.com/aliakborswe/neo-wallet-client)
-
 
 ## 🙏 Acknowledgments
 
