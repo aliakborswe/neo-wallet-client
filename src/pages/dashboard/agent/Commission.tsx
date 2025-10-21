@@ -99,7 +99,7 @@ export default function Commission() {
               {commissionData.map((commission: any) => (
                 <div
                   key={commission._id}
-                  className='flex items-center justify-between rounded-lg border border-border p-4 bg-white'
+                  className='flex items-center justify-between rounded-lg border border-border p-4'
                 >
                   <div>
                     <div className='font-medium'>

@@ -165,7 +165,7 @@ export default function AllTransaction() {
                 {transactions.map((transaction: any) => (
                   <div
                     key={transaction._id}
-                    className='sm:flex items-center justify-between rounded-lg border border-border p-4 bg-white'
+                    className='sm:flex items-center justify-between rounded-lg border border-border p-4'
                   >
                     <div className='flex items-center gap-4'>
                       <div

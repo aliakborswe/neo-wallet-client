@@ -131,7 +131,7 @@ export default function UpdateProfile() {
                         <input
                           type='text'
                           {...field}
-                          className='block w-full border border-gray-300 text-black rounded-md py-1 pl-3 shadow-sm'
+                          className='block w-full border   rounded-md py-1 pl-3 shadow-sm'
                         />
                       </FormControl>
                       <FormMessage />
@@ -148,7 +148,7 @@ export default function UpdateProfile() {
                         <input
                           type='email'
                           {...field}
-                          className='block w-full border border-gray-300 text-black rounded-md py-1 pl-3 shadow-sm'
+                          className='block w-full border  rounded-md py-1 pl-3 shadow-sm'
                         />
                       </FormControl>
                       <FormMessage />
@@ -165,7 +165,7 @@ export default function UpdateProfile() {
                         <input
                           type='text'
                           {...field}
-                          className='block w-full border border-gray-300 text-black rounded-md py-1 pl-3 shadow-sm'
+                          className='block w-full border  rounded-md py-1 pl-3 shadow-sm'
                         />
                       </FormControl>
                       <FormMessage />

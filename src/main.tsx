@@ -8,15 +8,18 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./redux/store";
 import { TourProvider } from "./lib/tour/tour-context";
 import "driver.js/dist/driver.css";
+import { ThemeProvider } from "./components/layout/theme-provider";
 
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <TourProvider>
-      <ReduxProvider store={store}>
-        <RouterProvider router={router} />
-        <Toaster richColors />
-      </ReduxProvider>
-    </TourProvider>
+    <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+      <TourProvider>
+        <ReduxProvider store={store}>
+          <RouterProvider router={router} />
+          <Toaster richColors />
+        </ReduxProvider>
+      </TourProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

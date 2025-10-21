@@ -37,7 +37,7 @@ export function TransactionChart({
         acc[date] = { date, amount: 0, count: 0 };
       }
 
-      acc[date].amount += Math.abs(transaction.amount);
+      acc[date].amount += Math.abs(transaction.amount/100);
       acc[date].count += 1;
 
       return acc;
@@ -52,7 +52,7 @@ export function TransactionChart({
   return (
     <Card className='border-border/50 bg-card/50 backdrop-blur'>
       <CardHeader>
-        <CardTitle className='text-lg font-semibold'>{title}</CardTitle>
+        <CardTitle className='text-lg font-semibold '>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width='100%' height={300}>

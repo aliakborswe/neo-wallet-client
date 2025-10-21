@@ -161,7 +161,7 @@ export default function Transactions() {
                 {filteredTransactions.map((transaction: any) => (
                   <div
                     key={transaction._id}
-                    className='flex items-center justify-between rounded-lg border border-border p-4 bg-white'
+                    className='flex items-center justify-between rounded-lg border border-border p-4 '
                   >
                     <div className='flex items-center gap-4'>
                       <div
