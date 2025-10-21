@@ -54,7 +54,7 @@ export const userTourSteps = [
     popover: {
       title: "Recent Transactions",
       description:
-        "View your recent transactions here. You can search, filter by type, and see detailed information about each transaction.",
+        "View your recent transactions here. You can search and see detailed information about each transaction.",
       side: "top",
       align: "center",
     },
@@ -63,11 +63,10 @@ export const userTourSteps = [
 
 export const agentTourSteps = [
   {
-    element: "[data-tour='sidebar-nav']",
+    element: "[data-tour='overview-intro']",
     popover: {
-      title: "Navigation Menu",
-      description:
-        "Welcome to Agent Dashboard! Navigate between Cash In, Cash Out, Transactions, Commission tracking, and your Profile.",
+      title: "Hi,",
+      description: "Welcome to Agent Dashboard!",
       side: "right",
       align: "start",
     },
@@ -93,23 +92,23 @@ export const agentTourSteps = [
     },
   },
   {
-    element: "[data-tour='commission-info']",
+    element: "[data-tour='recent-activity']",
     popover: {
-      title: "Commission Tracking",
-      description:
-        "Track your commission earnings. See your transaction fee percentage and total commission earned.",
-      side: "top",
-      align: "center",
-    },
-  },
-  {
-    element: "[data-tour='profile-settings']",
-    popover: {
-      title: "Agent Profile",
-      description:
-        "View your agent profile, approval status, and account information.",
+      title: "Recent Activity ",
+      description: "View your all recent activity",
       side: "left",
       align: "start",
+    },
+  },
+
+  {
+    element: "[data-tour='recent-transactions']",
+    popover: {
+      title: "Recent Transactions",
+      description:
+        "View your recent transactions here. You can search and see detailed information about each transaction.",
+      side: "top",
+      align: "center",
     },
   },
 ];
@@ -164,5 +163,5 @@ export const adminTourSteps = [
       side: "top",
       align: "center",
     },
-  }
+  },
 ];

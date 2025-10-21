@@ -159,7 +159,7 @@ export default function Overview() {
       )}
 
       {!transactionsLoading && transactionsData.length > 0 && (
-        <div className='grid gap-4 md:grid-cols-2'>
+        <div className='grid gap-4 md:grid-cols-2' data-tour='recent-activity'>
           <TransactionChart
             transactions={transactionsData}
             title='Agent Activity'
@@ -186,7 +186,7 @@ export default function Overview() {
               No transactions yet
             </div>
           ) : (
-            <div className='space-y-4'>
+            <div className='space-y-4' data-tour='recent-transactions'>
               {transactionsData.map((transaction: any) => (
                 <div
                   key={transaction._id}
