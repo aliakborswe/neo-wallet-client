@@ -1,4 +1,3 @@
-
 import type React from "react";
 import { createContext, useContext, useState, useEffect } from "react";
 import { driver } from "driver.js";
@@ -19,6 +18,7 @@ export function TourProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Initialize driver.js instance
     const driverJs = driver({
+      steps: [] as import("driver.js").DriveStep[],
       showProgress: true,
       showButtons: ["next", "previous", "close"],
       overlayOpacity: 0.5,
@@ -47,11 +47,12 @@ export function TourProvider({ children }: { children: React.ReactNode }) {
     else if (role === "ADMIN") steps = adminTourSteps;
 
     setTimeout(() => {
-      driverInstance.setConfig({ steps });
+      driverInstance.setConfig({
+        steps: steps as import("driver.js").DriveStep[],
+      });
       driverInstance.drive();
     }, 800); // Wait for dashboard to render
   };
-  
 
   const resetTour = () => {
     localStorage.removeItem("neo-wallet-tour-seen");
@@ -64,7 +65,6 @@ export function TourProvider({ children }: { children: React.ReactNode }) {
     </TourContext.Provider>
   );
 }
-
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useTour() {

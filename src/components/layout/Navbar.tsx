@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ActiveLink from "./ActiveLink";
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
@@ -47,7 +47,7 @@ export default function Navbar() {
           ref={menuRef}
           className={`${
             showMenu ? "block" : "hidden"
-          } lg:block absolute w-[97%] lg:w-fit lg:static top-[62px] left-2.5 p-4 rounded-xl bg-background border lg:border-none shadow-md lg:shadow-none`}
+          } lg:block absolute w-[97%] lg:w-fit lg:static top-[62px] left-2.5 p-4 rounded-xl bg-background lg:bg-transparent border lg:border-none shadow-md lg:shadow-none`}
         >
           <div className='lg:flex justify-between items-center'>
             <div className='flex flex-col lg:flex-row gap-6 text-base font-medium text-foreground'>
@@ -59,6 +59,7 @@ export default function Navbar() {
               <ActiveLink to='/features'>Features</ActiveLink>
               <ActiveLink to='/pricing'>Pricing</ActiveLink>
               <ActiveLink to='/contact'>Contact</ActiveLink>
+              <ActiveLink to='/faq'>FAQ</ActiveLink>
               {data?.data?.email && (
                 <ActiveLink to={dashboardRoutes[userRole] || "/"}>
                   Dashboard

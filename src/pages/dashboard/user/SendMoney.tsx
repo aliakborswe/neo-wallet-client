@@ -44,7 +44,7 @@ export default function SendMoney() {
 
       setFormData({ receiverEmail: "", description: "", amount: "" });
     } catch (error: any) {
-      toast("Transaction Failed");
+      toast.error("Transaction Failed");
       console.log(error);
     }
   };

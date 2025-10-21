@@ -90,7 +90,7 @@ export default function AddMoney() {
                 name='amount'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Amount (BDT)</FormLabel>
+                    <FormLabel>Amount</FormLabel>
                     <FormControl>
                       <Input
                         className='border-border'

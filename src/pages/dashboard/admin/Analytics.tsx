@@ -10,8 +10,8 @@ import {
 import { useProfileQuery } from "@/redux/features/auth/auth.api";
 import { HelpCircle, TrendingUp, UserCheck, Users, Wallet } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TransactionChart } from "@/components/charts/TransactionChart";
 import { TransactionTypeChart } from "@/components/charts/TransactionTypeChart";
+import { TransactionChart } from "@/components/charts/TransactionChart";
 
 export default function Analytics() {
   const { data: user } = useProfileQuery(undefined);

@@ -45,7 +45,7 @@ export default function Wallet() {
                   <div className='text-lg font-bold'>
                     <strong>Ballance: </strong>
                     <span className='text-chart-3'>
-                      ৳{(wallet.balance / 100).toFixed(2)}
+                      ${(wallet.balance / 100).toFixed(2)}
                     </span>
                   </div>
                   <div>

@@ -37,7 +37,7 @@ export function TransactionChart({
         acc[date] = { date, amount: 0, count: 0 };
       }
 
-      acc[date].amount += Math.abs(transaction.amount / 100);
+      acc[date].amount += Math.abs(transaction.amount / 100 );
       acc[date].count += 1;
 
       return acc;
@@ -80,7 +80,7 @@ export function TransactionChart({
               fontSize={12}
               tickLine={false}
               axisLine={false}
-              tickFormatter={(value) => `৳${value}`}
+              tickFormatter={(value) => `$${value}`}
             />
             <Tooltip
               contentStyle={{

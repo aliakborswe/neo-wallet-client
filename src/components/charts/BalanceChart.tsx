@@ -43,7 +43,7 @@ export function BalanceChart({
         day: "numeric",
       });
 
-      const currentPoint = balance/100;
+      const currentPoint = balance / 100;
 
       // Reverse the transaction to get previous balance
       if (
@@ -90,7 +90,7 @@ export function BalanceChart({
               fontSize={12}
               tickLine={false}
               axisLine={false}
-              tickFormatter={(value) => `৳${value}`}
+              tickFormatter={(value) => `$${value}`}
             />
             <Tooltip
               contentStyle={{
@@ -99,7 +99,7 @@ export function BalanceChart({
                 borderRadius: "8px",
               }}
               labelStyle={{ color: "hsl(var(--foreground))" }}
-              formatter={(value: number) => [`৳${value.toFixed(2)}`, "Balance"]}
+              formatter={(value: number) => [`$${value.toFixed(2)}`, "Balance"]}
             />
             <Line
               type='monotone'

@@ -6,6 +6,7 @@ import {
   ResponsiveContainer,
   Tooltip,
   Legend,
+  type PieLabelRenderProps,
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -19,13 +20,7 @@ interface TransactionTypeChartProps {
   title?: string;
 }
 
-const COLORS = [
-  "hsl(var(--chart-1))",
-  "hsl(var(--chart-2))",
-  "hsl(var(--chart-3))",
-  "hsl(var(--chart-4))",
-  "hsl(var(--chart-5))",
-];
+
 
 export function TransactionTypeChart({
   transactions,
@@ -61,14 +56,21 @@ export function TransactionTypeChart({
               cx='50%'
               cy='50%'
               labelLine={false}
-              label={({ name, percent }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
+              label={({ name, percent }: PieLabelRenderProps) => (
+                <text
+                  fill='#374151'
+                  fontSize={12}
+                  textAnchor='middle'
+                  dominantBaseline='central'
+                >
+                  {`${name ?? ""} ${(percent ?? 0 * 100)}%`}
+                </text>
+              )}
               outerRadius={80}
               fill='#8884d8'
               dataKey='value'
             >
-              {chartData.map((entry, index) => (
+              {chartData.map((_entry, index) => (
                 <Cell key={`cell-${index}`} fill='#059669' />
               ))}
             </Pie>
@@ -78,7 +80,7 @@ export function TransactionTypeChart({
                 border: "1px solid hsl(var(--border))",
                 borderRadius: "8px",
               }}
-              formatter={(value: number) => `৳${value.toFixed(2)}`}
+              formatter={(value: number) => `$${value.toFixed(2)}`}
             />
             <Legend />
           </PieChart>

@@ -39,7 +39,7 @@ export function StatCard({
       </CardHeader>
       <CardContent>
         {isLoading ? (
-          <Spinner size='sm' />
+          <Spinner />
         ) : (
           <>
             <div className='text-2xl font-bold'>{value}</div>
