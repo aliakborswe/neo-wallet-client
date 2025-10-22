@@ -20,8 +20,6 @@ interface TransactionTypeChartProps {
   title?: string;
 }
 
-
-
 export function TransactionTypeChart({
   transactions,
   title = "Transaction Types",
@@ -63,7 +61,7 @@ export function TransactionTypeChart({
                   textAnchor='middle'
                   dominantBaseline='central'
                 >
-                  {`${name ?? ""} ${(percent ?? 0 * 100)}%`}
+                  {`${name ?? ""} ${percent ?? 0 * 100}%`}
                 </text>
               )}
               outerRadius={80}
@@ -80,7 +78,7 @@ export function TransactionTypeChart({
                 border: "1px solid hsl(var(--border))",
                 borderRadius: "8px",
               }}
-              formatter={(value: number) => `$${value.toFixed(2)}`}
+              formatter={(value: number) => `${(value / 100).toFixed(2)}`}
             />
             <Legend />
           </PieChart>
