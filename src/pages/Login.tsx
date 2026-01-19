@@ -57,6 +57,11 @@ export default function Login() {
     },
   });
 
+  const handleDemoLogin = (email: string, password: string) => {
+    form.setValue("email", email);
+    form.setValue("password", password);
+  };
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const credentials = {
       email: data.email,
@@ -84,7 +89,7 @@ export default function Login() {
         toast.success("Login successful!", { id: loginId });
       }, 800);
     } catch (error: any) {
-      toast.error("Credentials are not valid", { id: loginId });
+      toast.error(error.data, { id: loginId });
       console.log(error);
       // if (error.originalStatus === 401) {
       //   navigate("/verify");
@@ -199,14 +204,28 @@ export default function Login() {
             <CardTitle className='text-sm'>Demo Credentials</CardTitle>
           </CardHeader>
           <CardContent className='space-y-2 text-xs text-muted-foreground'>
-            <div>
-              <strong>User:</strong> user@gmail.com / aadsfA123!
-            </div>
-            <div>
-              <strong>Agent:</strong> agent@gmail.com / aadsfA123!
-            </div>
-            <div>
-              <strong>Admin:</strong> admin@gmail.com / aadsfA123!
+            <div className='flex flex-col gap-2'>
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => handleDemoLogin("user@gmail.com", "aadsfA123!")}
+              >
+                User login
+              </Button>
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => handleDemoLogin("agent@gmail.com", "aadsfA123!")}
+              >
+                Agent login
+              </Button>
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => handleDemoLogin("admin@gmail.com", "aadsfA123!")}
+              >
+                Admin login
+              </Button>
             </div>
           </CardContent>
         </Card>

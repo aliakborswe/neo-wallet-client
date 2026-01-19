@@ -75,9 +75,9 @@ export default function CashOut() {
               <Input
                 id='amount'
                 type='number'
-                step='0.01'
-                min='0.01'
-                placeholder='0.00'
+                step='100'
+                min='100'
+                placeholder='At least $100'
                 value={formData.amount}
                 onChange={(e) =>
                   setFormData({ ...formData, amount: e.target.value })
