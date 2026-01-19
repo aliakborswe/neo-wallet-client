@@ -38,7 +38,7 @@ export default function Overview() {
       (tx: any) =>
         tx.type === "SEND_MONEY" ||
         tx.type === "WITHDRAW_MONEY" ||
-        tx.type === "CASH_OUT"
+        tx.type === "CASH_OUT",
     )
     .reduce((sum: number, tx: any) => sum + tx.amount, 0);
 
@@ -47,7 +47,7 @@ export default function Overview() {
       (tx: any) =>
         tx.type === "RECEIVE_MONEY" ||
         tx.type === "ADD_MONEY" ||
-        tx.type === "CASH_IN"
+        tx.type === "CASH_IN",
     )
     .reduce((sum: number, tx: any) => sum + tx.amount, 0);
 
@@ -235,7 +235,7 @@ export default function Overview() {
                       transaction.type.includes("WITHDRAW")
                         ? "-"
                         : "+"}
-                      {formatCurrency(transaction.amount)}
+                      {formatCurrency(transaction.amount / 100)}
                     </div>
                     <div className='text-sm text-muted-foreground'>
                       {transaction.status}
