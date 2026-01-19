@@ -91,7 +91,7 @@ export default function WithdrawMoney() {
                 Withdrawal fee: 1.5% of amount
               </p>
             </div>
-            <div className="space-y-2">
+            <div className='space-y-2'>
               <Label htmlFor='description'>Description (Optional)</Label>
               <Textarea
                 id='description'
