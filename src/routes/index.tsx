@@ -19,6 +19,8 @@ import Unauthorized from "@/pages/Unauthorized";
 import { role } from "@/constants/role";
 import type { TRole } from "@/types";
 import { profileSidebarItems } from "./profileSidebarItems";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfService from "@/pages/TermsOfService";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +76,14 @@ export const router = createBrowserRouter([
         Component: Contact,
         path: "contact",
       },
+      {
+        Component: PrivacyPolicy,
+        path: "privacy-policy",
+      },
+      {
+        Component: TermsOfService,
+        path: "terms-of-service",
+      }
     ],
   },
   {
